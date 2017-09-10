@@ -5,7 +5,6 @@ chardet==3.0.4
 modulegraph==0.10.4
 oauthlib==2.0.2
 py2app==0.7.3
-pyOpenSSL==0.13.1
 pyparsing==2.0.1
 python-dateutil==1.5
 python-twitter==3.3
