@@ -16,5 +16,3 @@ six==1.4.1
 tweetpy==0.1
 urllib3==1.22
 virtualenv==15.1.0
-xattr==0.6.4
-zope.interface==4.1.1
