@@ -1,0 +1,8 @@
+oauthlib=2.0.2
+pip=9.0.1
+python-twitter=3.3
+requests=2.18.4
+requests-oauthlib=0.8.0
+tweetpy=0.1
+urllib3=1.22
+virtualenv=15.1.0
