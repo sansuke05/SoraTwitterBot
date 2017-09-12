@@ -1,7 +1,7 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 import twitter
+import os
 import dictionary
 # from requests_oauthlib import OAuth1Session
 import json
@@ -14,10 +14,10 @@ ACCESS_TOKEN_SECRET = '0gJRodRKNSJ4kGSOtR7dWETnGXcxjBKXZYxYQkTgh02db'
 # url = "https://api.twitter.com/1.1/statuses/update.json"
 
 auth = twitter.OAuth(
-	consumer_key=CONSUMER_KEY,
-	consumer_secret=CONSUMER_SECRET,
-	token=ACCESS_TOKEN_KEY,
-	token_secret=ACCESS_TOKEN_SECRET,
+	consumer_key=os.environ["CONSUMER_KEY"],
+	consumer_secret=os.environ["CONSUMER_SECRET"],
+	token=os.environ["ACCESS_TOKEN_KEY"],
+	token_secret=os.environ["ACCESS_TOKEN_SECRET"],
 	)
 
 t = twitter.Twitter(auth=auth)

@@ -1,1 +1,1 @@
-bot: python3 Sora.py
+web: python index.py
