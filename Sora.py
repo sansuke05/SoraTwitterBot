@@ -6,11 +6,6 @@ import dictionary
 # from requests_oauthlib import OAuth1Session
 import json
 
-CONSUMER_KEY = 'A9jhPjQxwCZEz1LmYcMMTBccD'
-CONSUMER_SECRET = '0xmmFZ2fQjqju1VYb05x1dUWYHRNVPb7VLChWElpS34gvVKGfW'
-ACCESS_TOKEN_KEY = '832506075068784640-H5XvBBSL7R87pyoloCsXIPMmQN1gGIf'
-ACCESS_TOKEN_SECRET = '0gJRodRKNSJ4kGSOtR7dWETnGXcxjBKXZYxYQkTgh02db'
-
 # url = "https://api.twitter.com/1.1/statuses/update.json"
 
 auth = twitter.OAuth(
