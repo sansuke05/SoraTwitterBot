@@ -5,7 +5,6 @@ sys.path.append(os.pardir)
 import oauth_init
 
 import twitter
-import oauth_init
 import dictionary
 
 t = twitter.Twitter(auth=oauth_init.auth)
