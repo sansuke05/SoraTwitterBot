@@ -14,4 +14,3 @@ def tweet():
 	print(f)
 
 tweet()
-# readUserstream()
