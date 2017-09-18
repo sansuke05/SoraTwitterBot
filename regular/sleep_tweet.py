@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import os, sys
-sys.path.append(os.getcwd())
+sys.path.append('/home/pi/projects/SoraTwitterBot/')
 import oauth_init
 
 import twitter
