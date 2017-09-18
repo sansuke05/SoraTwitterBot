@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
 
+import os, sys
+sys.path.append(os.pardir)
+import oauth_init
+
 import twitter
 import oauth_init
 import dictionary
