@@ -36,7 +36,7 @@ def tweet():
 
 	# params = {"status": status}
 	f = t.statuses.update(status=status)
-	# print(f)
+	print(f)
 
 tweet()
 # readUserstream()
