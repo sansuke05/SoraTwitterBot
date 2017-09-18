@@ -5,14 +5,15 @@ import os
 import dictionary
 # from requests_oauthlib import OAuth1Session
 import json
+from system import conf
 
 # url = "https://api.twitter.com/1.1/statuses/update.json"
 
 auth = twitter.OAuth(
-	consumer_key=os.environ["CONSUMER_KEY"],
-	consumer_secret=os.environ["CONSUMER_SECRET"],
-	token=os.environ["ACCESS_TOKEN_KEY"],
-	token_secret=os.environ["ACCESS_TOKEN_SECRET"],
+	consumer_key=conf.CONSUMER_KEY,
+	consumer_secret=conf.CONSUMER_SECRET,
+	token=conf.ACCESS_TOKEN_KEY,
+	token_secret=conf.ACCESS_TOKEN_SECRET,
 	)
 
 t = twitter.Twitter(auth=auth)
@@ -35,7 +36,7 @@ def tweet():
 
 	# params = {"status": status}
 	f = t.statuses.update(status=status)
-	print(f)
+	# print(f)
 
 tweet()
 # readUserstream()
