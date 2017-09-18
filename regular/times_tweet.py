@@ -14,9 +14,9 @@ def tweet():
 	status = ''
 	if h == 8:
 		status = 'おはようございます〜！'
-	elif
+	else:
 		status = 'おやすみなさ〜い！'
-	
+
 	print(status)
 
 	f = t.statuses.update(status=status)
