@@ -4,7 +4,8 @@
 import random
 
 def randomDictionary():
-	f = open('/home/pi/projects/SoraTwitterBot/dictionary/random.txt')
+	#f = open('/home/pi/projects/SoraTwitterBot/dictionary/random.txt')
+	f = open('./dictionary/random.txt')
 	buffar = f.readlines()
 	f.close()
 
