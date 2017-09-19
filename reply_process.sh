@@ -1,2 +1,2 @@
-sudo ~/.pyenv/versions/3.6.1/bin/python /Users/user/projects/TwitterBot/SoraTwitterBot/reply.py &
-echo $! > /Users/user/projects/TwitterBot/SoraTwitterBot/reply_py.pid
+sudo ~/.pyenv/versions/3.6.1/bin/python /home/pi/projects/SoraTwitterBot/reply.py &
+echo $! > /home/pi/projects/SoraTwitterBot/reply_py.pid
