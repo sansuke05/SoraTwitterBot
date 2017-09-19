@@ -1,35 +1,32 @@
 # -*- coding: utf-8 -*-
 
-import twitter
+import tweepy
 import oauth_init
-import json
+import datetime
 
-t = twitter.Twitter(auth=oauth_init.auth)
-url = "https://api.twitter.com/1.1/statuses/home_timeline.json"
-domain = 'userstream.twitter.com'
+api = tweepy.API(oauth_init.auth1)
 
-def readUserstream():
-	t_userstream = twitter.TwitterStream(auth=oauth_init.auth,domain=domain)
+class Listener(tweepy.StreamListener):
+	"""docstring for Listener"""
+	def on_status(self, status):
+		status.created_at += datetime.timedelta(hours=9)
 
-	for msg in twitter.userstream.user():
-		print(msg)
+		# 返信
+		if str(status.in_reply_to_screen_name)=="dds_sora":
+			tweet = '@'+ str(status.user.screen_name) + ' ' + 'こんにちは！\n' \
+			+ str(datetime.datetime.today())
+			api.update_status(status=tweet)
+		return True
 
-#def getTimeline():
-	#r = requests.post(url, auth=auth, stream=True, data={"track":"@"})
-#	params = {
-#			"count":200, #ツイートを最新から何件取得するか(最大200件)
-#			"include_entities" : 1, #エンティティ(画像のURL等)をツイートに含めるか
-#			"exclude_replies" : 1, #リプライを含めるか
-#			}
+	def on_error(self, status_code):
+		print('Got an error with status code: ' + str(status_code))
+		return True
 
-#	req = oauth_init.auth1.get(url, params=params)
-
-#	if req.status_code == 20:
-#		timeline = json.loads(req.text)
-#	
-#		for tweet in timeline:
-#			print(tweet["text"])
-#	else:
-#		print("Error: %d" % req.status_code)
-
-readUserstream()
+	def on_timeout(self):
+		print('Timeout...')
+		return True
+		
+listener = Listener()
+stream = tweepy.Stream(oauth_init.auth1, listener)
+stream.userstream()
+#readUserstream()

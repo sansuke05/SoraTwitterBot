@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import twitter
+import tweepy
 # from requests_oauthlib import OAuth1Session
 from system import conf
 
@@ -13,9 +14,5 @@ auth = twitter.OAuth(
 	token_secret=conf.ACCESS_TOKEN_SECRET,
 	)
 
-# auth1 = OAuth1Session(
-#	conf.CONSUMER_KEY,
-#	conf.CONSUMER_SECRET,
-#	conf.ACCESS_TOKEN_KEY,
-#	conf.ACCESS_TOKEN_SECRET,
-#	)
+auth1 = tweepy.OAuthHandler(conf.CONSUMER_KEY, conf.CONSUMER_SECRET)
+auth1.set_access_token(conf.ACCESS_TOKEN_KEY, conf.ACCESS_TOKEN_SECRET)
