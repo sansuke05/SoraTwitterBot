@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import random
+import re
 
 def randomDictionary():
 	f = open('/home/pi/projects/SoraTwitterBot/dictionary/random.txt')
@@ -18,3 +19,19 @@ def randomDictionary():
 	return phrase.replace('\n','')
 
 # randomDictionary()
+def patternDictionary(reply):
+	f = open('/home/pi/projects/SoraTwitterBot/dictionary/pattern.txt')
+
+	buffar = f.readlines()
+	f.close()
+
+	# パターンマッチ
+	for line in buffar:
+		phrase = line.replace('\n','').split(':')
+		pattern = r + phrase[0]
+		m = re.search(pattern, reply)
+
+		if m:
+			return phrase[1]
+
+	return 'F'
