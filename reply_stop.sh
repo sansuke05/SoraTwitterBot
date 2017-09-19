@@ -1,1 +1,1 @@
-cat reply_py.pid | xargs kill -term
+cat /Users/user/projects/TwitterBot/SoraTwitterBot/reply_py.pid | xargs kill -term
