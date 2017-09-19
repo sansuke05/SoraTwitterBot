@@ -28,7 +28,7 @@ def patternDictionary(reply):
 	# パターンマッチ
 	for line in buffar:
 		phrase = line.replace('\n','').split(':')
-		pattern = r + phrase[0]
+		pattern = phrase[0]
 		m = re.search(pattern, reply)
 
 		if m:
