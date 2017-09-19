@@ -12,9 +12,9 @@ class Listener(tweepy.StreamListener):
 	def on_status(self, status):
 		status.created_at += datetime.timedelta(hours=9)
 
-		# 返信
+		# リプライに対する応答
 		if str(status.in_reply_to_screen_name)=="dds_sora":
-			response = dictionary.patternDictionary(status.text)
+			response = dictionary.replyResponce(status.text)
 			if response=='F':
 				return True
 			tweet = '@'+ str(status.user.screen_name) + ' ' \

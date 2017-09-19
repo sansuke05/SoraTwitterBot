@@ -19,7 +19,7 @@ def randomDictionary():
 	return phrase.replace('\n','')
 
 # randomDictionary()
-def patternDictionary(reply):
+def replyResponce(reply):
 	f = open('/home/pi/projects/SoraTwitterBot/dictionary/pattern.txt')
 
 	buffar = f.readlines()
