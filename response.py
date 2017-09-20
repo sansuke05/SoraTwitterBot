@@ -19,7 +19,7 @@ def random_response():
 	return phrase.replace('\n','')
 
 # randomDictionary()
-def reply_response(reply):
+def reply_response(reply,user_name):
 	f = open('/home/pi/projects/SoraTwitterBot/dictionary/pattern.txt')
 
 	buffar = f.readlines()
@@ -28,10 +28,14 @@ def reply_response(reply):
 	# パターンマッチ
 	for line in buffar:
 		phrase = line.replace('\n','').split(':')
-		pattern = phrase[0]
-		m = re.search(pattern, reply)
+		_pattern = phrase[0]
+		_responce = phrase[1]
+		m = re.search(_pattern, reply)
 
 		if m:
-			return phrase[1]
+			# 反応を整形
+			_responce.replace('$br','\n')
+			_responce.replace('$name',user_name)
+			return _responce
 
 	return 'F'
