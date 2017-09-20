@@ -21,7 +21,16 @@ class Listener(tweepy.StreamListener):
 				return True
 			tweet = '@'+ str(_user_id) + ' ' \
 			+ _response + '\n'
-			api.update_status(status=tweet)
+
+			try:
+				api.update_status(status=tweet)
+				# api.update_with_media(
+				#			status='画像付きだってできるんよ',
+				#			filename='（画像ファイルパス）')
+			except tweepy.TweepError as e:
+				print(e.reason)
+				api.update_status(status=e.reason)
+
 		return True
 
 	def on_error(self, status_code):
