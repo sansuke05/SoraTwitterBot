@@ -34,8 +34,8 @@ def reply_response(reply,user_name):
 
 		if m:
 			# 反応を整形
-			_responce.replace('$br','\n')
-			_responce.replace('$name',user_name)
+			_responce.replace('<br>','\n')
+			_responce.replace('<name>',user_name)
 			return _responce
 
 	return 'F'
