@@ -4,7 +4,7 @@
 import random
 import re
 
-def randomResponce():
+def random_response():
 	f = open('/home/pi/projects/SoraTwitterBot/dictionary/random.txt')
 	#f = open('./dictionary/random.txt')
 	buffar = f.readlines()
@@ -19,7 +19,7 @@ def randomResponce():
 	return phrase.replace('\n','')
 
 # randomDictionary()
-def replyResponce(reply):
+def reply_response(reply):
 	f = open('/home/pi/projects/SoraTwitterBot/dictionary/pattern.txt')
 
 	buffar = f.readlines()

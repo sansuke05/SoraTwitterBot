@@ -2,12 +2,12 @@
 
 import twitter
 import oauth_init
-import responce
+import response
 
 t = twitter.Twitter(auth=oauth_init.auth)
 
 def tweet():
-	status = responce.randomResponce()
+	status = response.random_response()
 	print(status)
 
 	f = t.statuses.update(status=status)
