@@ -3,7 +3,7 @@
 import tweepy
 import oauth_init
 import datetime
-import dictionary
+import responce
 
 api = tweepy.API(oauth_init.auth1)
 
@@ -14,11 +14,11 @@ class Listener(tweepy.StreamListener):
 
 		# リプライに対する応答
 		if str(status.in_reply_to_screen_name)=="dds_sora":
-			response = dictionary.replyResponce(status.text)
-			if response=='F':
+			_responce = response.replyResponce(status.text)
+			if _response=='F':
 				return True
 			tweet = '@'+ str(status.user.screen_name) + ' ' \
-			+ response + '\n'
+			+ _response + '\n'
 			api.update_status(status=tweet)
 		return True
 
@@ -33,4 +33,3 @@ class Listener(tweepy.StreamListener):
 listener = Listener()
 stream = tweepy.Stream(oauth_init.auth1, listener)
 stream.userstream()
-#readUserstream()

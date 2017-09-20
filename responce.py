@@ -4,7 +4,7 @@
 import random
 import re
 
-def randomDictionary():
+def randomResponce():
 	f = open('/home/pi/projects/SoraTwitterBot/dictionary/random.txt')
 	#f = open('./dictionary/random.txt')
 	buffar = f.readlines()
