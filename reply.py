@@ -14,11 +14,12 @@ class Listener(tweepy.StreamListener):
 
 		# リプライに対する応答
 		if str(status.in_reply_to_screen_name)=="dds_sora":
-			_user = status.user.screen_name
-			_response = response.reply_response(status.text,_user)
+			_user_id = status.user.screen_name
+			_user_name = status.user.name
+			_response = response.reply_response(status.text,_user_name)
 			if _response=='F':
 				return True
-			tweet = '@'+ str(_user) + ' ' \
+			tweet = '@'+ str(_user_id) + ' ' \
 			+ _response + '\n'
 			api.update_status(status=tweet)
 		return True
