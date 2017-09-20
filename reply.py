@@ -29,7 +29,9 @@ class Listener(tweepy.StreamListener):
 				#			filename='（画像ファイルパス）')
 			except tweepy.TweepError as e:
 				print(e.reason)
-				api.update_status(status=e.reason)
+				err_rep = '@' + str(_user_id) + ' tweet error:' \
+					+ e.reason
+				api.update_status(status=err_rep)
 
 		return True
 
