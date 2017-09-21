@@ -36,6 +36,10 @@ def reply_response(reply,user_name):
 			# 反応を整形
 			_responce = re.sub('<br>','\n',_responce)
 			_responce = re.sub('<name>',user_name,_responce)
+
+			# Status is a duplicate対策
+			for n in range(random.randint(1,3)):
+				_responce += '.'
 			return _responce
 
 	return 'F'
