@@ -15,6 +15,7 @@ def tweet():
 	print(argvs)
 
 	if argvs[1] == 'restart':
+		print('starting reply!')
 		status = 'Reconnected to userstream successfully!'
 
 	f = t.statuses.update(status=status)
