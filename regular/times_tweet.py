@@ -5,7 +5,6 @@ sys.path.append('/home/pi/projects/SoraTwitterBot/')
 import oauth_init
 from datetime import datetime
 import twitter
-import dictionary
 
 t = twitter.Twitter(auth=oauth_init.auth)
 h = datetime.now().hour
@@ -20,6 +19,6 @@ def tweet():
 	print(status)
 
 	f = t.statuses.update(status=status)
-	print(f)
+	#print(f)
 
 tweet()

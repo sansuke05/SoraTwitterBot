@@ -11,6 +11,6 @@ def tweet():
 	print(status)
 
 	f = t.statuses.update(status=status)
-	print(f)
+	#print(f)
 
 tweet()
