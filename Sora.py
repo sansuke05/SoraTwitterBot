@@ -3,12 +3,18 @@
 import twitter
 import oauth_init
 import response
+import sys
 
 t = twitter.Twitter(auth=oauth_init.auth)
+argvs = sys.argv
+args = len(argvs)
 
 def tweet():
 	status = response.random_response()
 	print(status)
+
+	if args == 2 and argvs[1] == 'restart':
+		status = 'Reconnected to userstream successfully!'
 
 	f = t.statuses.update(status=status)
 	#print(f)
