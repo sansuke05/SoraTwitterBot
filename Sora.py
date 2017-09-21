@@ -12,6 +12,7 @@ args = len(argvs)
 def tweet():
 	status = response.random_response()
 	print(status)
+	print(argvs)
 
 	if argvs[1] == 'restart':
 		status = 'Reconnected to userstream successfully!'
