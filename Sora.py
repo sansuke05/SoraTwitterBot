@@ -17,6 +17,6 @@ def tweet():
 		status = 'Reconnected to userstream successfully!'
 
 	f = t.statuses.update(status=status)
-	#print(f)
+	print(f)
 
 tweet()
