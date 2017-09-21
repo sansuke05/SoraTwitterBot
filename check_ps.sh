@@ -1,8 +1,7 @@
 #!/bin/bash
 # プロセス監視用シェル
 pid=$(cat /home/pi/projects/SoraTwitterBot/reply_py.pid)
-proc=$(ps)
-echo "this is checker" > tmp.txt
+proc=$(ps aux | grep python)
 
 if [[ !($proc =~ $pid) ]]; then
  	# プロセス再起動
