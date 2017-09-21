@@ -13,7 +13,7 @@ def random_response():
 	phrase = random.choice(buffar)
 
 	# Status is a duplicate対策
-	for n in range(random.randint(1,5)):
+	for n in range(random.randint(0,5)):
 		phrase += '.'
 
 	return phrase.replace('\n','')
@@ -38,7 +38,7 @@ def reply_response(reply,user_name):
 			_responce = re.sub('<name>',user_name,_responce)
 
 			# Status is a duplicate対策
-			for n in range(random.randint(1,3)):
+			for n in range(random.randint(0,3)):
 				_responce += '.'
 			return _responce
 
