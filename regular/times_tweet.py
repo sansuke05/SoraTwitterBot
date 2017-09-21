@@ -14,7 +14,7 @@ def tweet():
 	if h == 8:
 		status = 'おはようございます〜！'
 	else:
-		status = 'おやすみなさ〜い！'
+		status = 'おやすみなさ〜い！..'
 
 	print(status)
 
