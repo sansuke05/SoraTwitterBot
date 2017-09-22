@@ -11,13 +11,13 @@ args = len(argvs)
 
 def tweet():
 	status = response.random_response()
-	print(status)
 	print(argvs)
 
 	if 'restart' in argvs:
 		print('starting reply!')
 		status = 'Reconnected to userstream successfully!'
 
+	print(status)
 	f = t.statuses.update(status=status)
 	print(f)
 
