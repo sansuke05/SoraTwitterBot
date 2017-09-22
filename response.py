@@ -34,7 +34,9 @@ def reply_response(swicher,text,user_name):
 		phrase = line.replace('\n','').split(':')
 		_pattern = phrase[0]
 		_responses = phrase[1].split(',')
+		print(_responses)
 		_response = random.choice(_responses)
+		print(_response)
 		m = re.search(_pattern, text)
 
 		if m:
