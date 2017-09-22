@@ -20,10 +20,10 @@ class Listener(tweepy.StreamListener):
 		# リプライに対する応答
 		if str(status.in_reply_to_screen_name)=="dds_sora":
 			_response = response.reply_response('R',status.text,_user_name)
-		else
+		else:
 			# TLに対する反応
 			_response = response.reply_response('TL',status.text,_user_name)
-		
+
 		if _response=='F':
 			return True
 		tweet = '@'+ str(_user_id) + ' ' \
