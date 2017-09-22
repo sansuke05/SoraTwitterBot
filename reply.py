@@ -20,7 +20,7 @@ class Listener(tweepy.StreamListener):
 		# リプライに対する応答
 		if str(status.in_reply_to_screen_name)=="dds_sora":
 			_response = response.reply_response('R',status.text,_user_name)
-		else:
+		elif str(_user_name)!="dds_sora"
 			# TLに対する反応
 			_response = response.reply_response('TL',status.text,_user_name)
 
