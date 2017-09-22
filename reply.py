@@ -23,6 +23,8 @@ class Listener(tweepy.StreamListener):
 		elif str(_user_id)!="dds_sora":
 			# TLに対する反応
 			_response = response.reply_response('TL',status.text,_user_name)
+		else:
+			return True
 
 		if _response=='F':
 			return True
