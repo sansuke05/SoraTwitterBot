@@ -12,26 +12,34 @@ class Listener(tweepy.StreamListener):
 	def on_status(self, status):
 		status.created_at += datetime.timedelta(hours=9)
 
+		tweet = ''
+		_response = ''
+		_user_id = status.user.screen_name
+		_user_name = status.user.name
+
 		# リプライに対する応答
 		if str(status.in_reply_to_screen_name)=="dds_sora":
-			_user_id = status.user.screen_name
-			_user_name = status.user.name
-			_response = response.reply_response(status.text,_user_name)
-			if _response=='F':
-				return True
-			tweet = '@'+ str(_user_id) + ' ' \
-			+ _response + '\n'
+			_response = response.reply_response('R',status.text,_user_name)
+		else
+			# TLに対する反応
+			_response = response.reply_response('TL',status.text,_user_name)
+		
+		if _response=='F':
+			return True
+		tweet = '@'+ str(_user_id) + ' ' \
+		+ _response + '\n'
 
-			try:
-				api.update_status(status=tweet)
-				# api.update_with_media(
-				#			status='画像付きだってできるんよ',
-				#			filename='（画像ファイルパス）')
-			except tweepy.TweepError as e:
-				print(e.reason)
-				err_rep = '@' + str(_user_id) + ' tweet error:' \
-					+ e.reason
-				api.update_status(status=err_rep)
+		try:
+			api.update_status(status=tweet)
+			# api.update_with_media(
+			#			status='画像付きだってできるんよ',
+			#			filename='（画像ファイルパス）')
+		except tweepy.TweepError as e:
+			print(e.reason)
+			err_rep = '@' + str(_user_id) + ' tweet error:' \
+				+ e.reason
+			api.update_status(status=err_rep)
+
 
 		return True
 

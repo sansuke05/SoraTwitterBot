@@ -19,8 +19,12 @@ def random_response():
 	return phrase.replace('\n','')
 
 # randomDictionary()
-def reply_response(reply,user_name):
-	f = open('/home/pi/projects/SoraTwitterBot/dictionary/pattern.txt')
+def reply_response(swicher,text,user_name):
+	f = None
+	if swicher=='R':
+		f = open('/home/pi/projects/SoraTwitterBot/dictionary/pattern.txt')
+	else:
+		f = open('/home/pi/projects/SoraTwitterBot/dictionary/pattern2.txt')
 
 	buffar = f.readlines()
 	f.close()
@@ -29,17 +33,19 @@ def reply_response(reply,user_name):
 	for line in buffar:
 		phrase = line.replace('\n','').split(':')
 		_pattern = phrase[0]
-		_responce = phrase[1]
-		m = re.search(_pattern, reply)
+		_responses = phrase[1].split(',')
+		_response = random.choice(_responses)
+		m = re.search(_pattern, text)
 
 		if m:
 			# 反応を整形
-			_responce = re.sub('<br>','\n',_responce)
-			_responce = re.sub('<name>',user_name,_responce)
+			_response = re.sub('<br>','\n',_response)
+			_response = re.sub('<name>',user_name,_response)
 
 			# Status is a duplicate対策
 			for n in range(random.randint(0,3)):
-				_responce += '.'
-			return _responce
+				_response += '.'
+			return _response
 
 	return 'F'
+
