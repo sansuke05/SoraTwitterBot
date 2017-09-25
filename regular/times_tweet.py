@@ -13,6 +13,8 @@ def tweet():
 	status = ''
 	if h == 8:
 		status = 'おはようございます〜！'
+	elif h == 12:
+		status = 'お昼だよ！'
 	else:
 		status = 'おやすみなさ〜い！'
 
