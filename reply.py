@@ -16,6 +16,7 @@ class Listener(tweepy.StreamListener):
 		_response = ''
 		_user_id = status.user.screen_name
 		_user_name = status.user.name
+		_reply_id = status.id
 
 		# リプライに対する応答
 		if str(status.in_reply_to_screen_name)=="dds_sora":
@@ -32,14 +33,16 @@ class Listener(tweepy.StreamListener):
 		+ _response + '\n'
 
 		try:
-			api.update_status(status=tweet)
+			api.update_status(
+				status=tweet,
+				in_reply_to_status_id=_reply_id)
 			# api.update_with_media(
 			#			status='画像付きだってできるんよ',
 			#			filename='（画像ファイルパス）')
 		except tweepy.TweepError as e:
 			print(e.reason)
-			err_rep = '@' + str(_user_id) + ' tweet error:' \
-				+ e.reason
+			err_rep = '@' + str(_user_id) + ' ツイートできないみたい...' \
+				+ '\nerror status: ' + e.reason
 			api.update_status(status=err_rep)
 
 
