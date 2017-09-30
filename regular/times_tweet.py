@@ -10,17 +10,17 @@ t = twitter.Twitter(auth=oauth_init.auth)
 h = datetime.now().hour
 
 def tweet():
-	status = ''
-	if h == 8:
-		status = 'おはようございます〜！'
-	elif h == 12:
-		status = 'お昼だよ！'
-	else:
-		status = 'おやすみなさ〜い！'
+    status = ''
+    if h == 8:
+        status = 'おはようございます〜！'
+    elif h == 12:
+        status = 'お昼だよ！'
+    else:
+        status = 'おやすみなさ〜い！'
 
-	print(status)
+    print(status)
 
-	f = t.statuses.update(status=status)
-	#print(f)
+    f = t.statuses.update(status=status)
+    #print(f)
 
 tweet()

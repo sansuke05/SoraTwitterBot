@@ -2,17 +2,10 @@
 
 import twitter
 import tweepy
-# from requests_oauthlib import OAuth1Session
+# from requests_oauthlib import OauthSession
 from system import conf
 
 # url = "https://api.twitter.com/1.1/statuses/update.json"
 
-auth = twitter.OAuth(
-	consumer_key=conf.CONSUMER_KEY,
-	consumer_secret=conf.CONSUMER_SECRET,
-	token=conf.ACCESS_TOKEN_KEY,
-	token_secret=conf.ACCESS_TOKEN_SECRET,
-	)
-
-auth1 = tweepy.OAuthHandler(conf.CONSUMER_KEY, conf.CONSUMER_SECRET)
-auth1.set_access_token(conf.ACCESS_TOKEN_KEY, conf.ACCESS_TOKEN_SECRET)
+auth = tweepy.OAuthHandler(conf.CONSUMER_KEY, conf.CONSUMER_SECRET)
+auth.set_access_token(conf.ACCESS_TOKEN_KEY, conf.ACCESS_TOKEN_SECRET)
