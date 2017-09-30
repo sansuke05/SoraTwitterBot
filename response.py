@@ -5,47 +5,47 @@ import random
 import re
 
 def random_response():
-	f = open('/home/pi/projects/SoraTwitterBot/dictionary/random.txt')
-	#f = open('./dictionary/random.txt')
-	buffar = f.readlines()
-	f.close()
+    f = open('/home/pi/projects/SoraTwitterBot/dictionary/random.txt')
+    #f = open('./dictionary/random.txt')
+    buffar = f.readlines()
+    f.close()
 
-	phrase = random.choice(buffar)
+    phrase = random.choice(buffar)
 
-	# Status is a duplicate対策
-	for n in range(random.randint(0,5)):
-		phrase += '.'
+    # Status is a duplicate対策
+    for n in range(random.randint(0,5)):
+        phrase += '.'
 
-	return phrase.replace('\n','')
+    return phrase.replace('\n','')
 
 # randomDictionary()
 def reply_response(swicher,text,user_name):
-	f = None
-	if swicher=='R':
-		f = open('/home/pi/projects/SoraTwitterBot/dictionary/pattern.txt')
-	else:
-		f = open('/home/pi/projects/SoraTwitterBot/dictionary/pattern2.txt')
+    f = None
+    if swicher=='R':
+        f = open('/home/pi/projects/SoraTwitterBot/dictionary/pattern.txt')
+    else:
+        f = open('/home/pi/projects/SoraTwitterBot/dictionary/pattern2.txt')
 
-	buffar = f.readlines()
-	f.close()
+    buffar = f.readlines()
+    f.close()
 
-	# パターンマッチ
-	for line in buffar:
-		phrase = line.replace('\n','').split(':')
-		_pattern = phrase[0]
-		_responses = phrase[1].split(',')
-		_response = random.choice(_responses)
-		m = re.search(_pattern, text)
+    # パターンマッチ
+    for line in buffar:
+        phrase = line.replace('\n','').split(':')
+        _pattern = phrase[0]
+        _responses = phrase[1].split(',')
+        _response = random.choice(_responses)
+        m = re.search(_pattern, text)
 
-		if m:
-			# 反応を整形
-			_response = re.sub('<br>','\n',_response)
-			_response = re.sub('<name>',user_name,_response)
+        if m:
+            # 反応を整形
+            _response = re.sub('<br>','\n',_response)
+            _response = re.sub('<name>',user_name,_response)
 
-			# Status is a duplicate対策
-			for n in range(random.randint(0,3)):
-				_response += '.'
-			return _response
+            # Status is a duplicate対策
+            for n in range(random.randint(0,3)):
+                _response += '.'
+            return _response
 
-	return 'F'
+    return 'F'
 
