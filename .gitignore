@@ -2,7 +2,13 @@
 
 system/conf.py
 
+# Python cash files:
 *.pyc
+__pycache__/
+
+# Log files:
+log.txt
+reply_py.pid
 
 ### PyCharm ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and Webstorm
