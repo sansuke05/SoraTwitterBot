@@ -16,7 +16,7 @@ class Listener(tweepy.StreamListener):
         _response = ''
         _user_id = status.user.screen_name
         _user_name = status.user.name
-        _reply_id = status.
+        _reply_id = status.id
 
         # リプライに対する応答
         if str(status.in_reply_to_screen_name)=="dds_sora":
@@ -45,7 +45,7 @@ class Listener(tweepy.StreamListener):
                 + '\nerror status: ' + e.reason
             api.update_status(status=err_rep)
 
-        
+
         return True
 
     def on_error(self, status_code):
