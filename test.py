@@ -8,6 +8,10 @@ from system import conf
 # key
  
 api = tweepy.API(oauth_init.auth)
+file_path = './image/test.jpg'
  
-api.update_status("This is test tweet!!")
+api.update_with_media(
+    status="This is test tweet!!..",
+    filename=file_path,
+    )
 print('Done!')

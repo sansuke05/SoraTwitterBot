@@ -4,22 +4,37 @@ import tweepy
 import oauth_init
 import response
 import sys
+import re
+
+IMG_DIR = '/home/pi/projects/SoraTwitterBotgit/image/'
 
 api = tweepy.API(oauth_init.auth)
 argvs = sys.argv
 args = len(argvs)
 
 def tweet():
-    status = response.random_response()
+    statuses = []
     print(argvs)
 
     if 'restart' in argvs:
         print('starting reply!')
-        status = 'Reconnected to userstream successfully!'
+        statuses[0] = 'Reconnected to userstream successfully!'
+    else:
+        statuses = response.random_response()
 
-    print(status)
-    f = api.update_status(status=status)
-    print(f)
+    print(statuses)
+
+    if len(statuses) == 2:
+        filename = IMG_DIR + statuses[1] + '.jpg'
+        print(filename)
+        api.update_with_media(
+            status=statuses[0],
+            filename=filename,
+            )
+        print('Done!')
+    else:
+        r = api.update_status(status=statuses[0])
+        print(r)
 
 if __name__ == '__main__':
     tweet()

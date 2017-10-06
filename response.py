@@ -10,13 +10,14 @@ def random_response():
     buffar = f.readlines()
     f.close()
 
-    phrase = random.choice(buffar)
+    phrase = random.choice(buffar).split(',')
 
     # Status is a duplicate対策
     for n in range(random.randint(0,5)):
-        phrase += '.'
+        phrase[0] += '.'
 
-    return phrase.replace('\n','')
+    phrase[0] = phrase[0].replace('\n','')
+    return phrase
 
 # randomDictionary()
 def reply_response(swicher,text,user_name):
