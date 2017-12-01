@@ -17,6 +17,7 @@ def tweet():
     print(argvs)
 
     if 'restart' in argvs:
+        # ストリーム再接続時のみ実行
         print('starting reply!')
         statuses[0] = 'Reconnected to userstream successfully!'
     else:
