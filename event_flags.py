@@ -5,14 +5,14 @@ import configparser
 import os
 
 # 定数
-NO_EVENT_FLAG = 0
-SLEEP_MANAGER_EVENT = 1
+NO_EVENT_FLAG = '0'
+SLEEP_MANAGER_EVENT = '1'
 
 SECTION1 = 'event_flags'
-FILE_PATH = "./system/setting.ini"
+FILE_PATH = "/home/pi/projects/SoraTwitterBot/system/setting.ini"
+#FILE_PATH = './test.ini'
 
-
-config = ConfigParser.ConfigParser()
+config = configparser.SafeConfigParser()
 
 
 # フラグ管理用設定ファイル作成
@@ -47,3 +47,7 @@ def set_event_flags(event_flag):
     else:
         create_setting_file(event_flag)
         return
+
+#debug
+#set_event_flags(SLEEP_MANAGER_EVENT)
+#print(get_event_flags())
