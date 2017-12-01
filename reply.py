@@ -23,11 +23,12 @@ class Listener(tweepy.StreamListener):
         # リプライに対する応答
         if str(status.in_reply_to_screen_name)=="dds_sora":
 
-            # イベントが発生していればイベントごとに処理を変更
-            if event_flags.event_flag == event_flags.SLEEP_MANAGER_EVENT:
+            # 特定の人からのリプかつイベントが発生していればイベントごとに処理を変更
+            if event_flags.get_event_flags() == event_flags.SLEEP_MANAGER_EVENT and \
+            _user_id == '@sansuke05':
                 _response = form_reply.reply_sleep_manager_responce(status.text,_user_name)
-            else:
-                _response = response.reply_response('R',status.text,_user_name)
+            
+            _response = response.reply_response('R',status.text,_user_name)
         elif str(_user_id)!="dds_sora":
             # TLに対する反応
             _response = response.reply_response('TL',status.text,_user_name)
