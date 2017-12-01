@@ -28,8 +28,8 @@ class Listener(tweepy.StreamListener):
             # and \
             # _user_id == '@sansuke05':
                 _response = form_reply.reply_sleep_manager_responce(status.text,_user_name)
-            
-            _response = response.reply_response('R',status.text,_user_name)
+            else:
+                _response = response.reply_response('R',status.text,_user_name)
         elif str(_user_id)!="dds_sora":
             # TLに対する反応
             _response = response.reply_response('TL',status.text,_user_name)
