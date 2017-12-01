@@ -25,7 +25,7 @@ class Listener(tweepy.StreamListener):
 
             # 特定の人からのリプかつイベントが発生していればイベントごとに処理を変更
             if event_flags.get_event_flags() == event_flags.SLEEP_MANAGER_EVENT and \
-            _user_id == '@sansuke05':
+            _user_id == 'sansuke05':
                 _response = form_reply.reply_sleep_manager_responce(status.text,_user_name)
             else:
                 _response = response.reply_response('R',status.text,_user_name)
