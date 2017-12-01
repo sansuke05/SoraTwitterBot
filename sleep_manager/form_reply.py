@@ -13,7 +13,7 @@ def reply_introduction():
     event_flags.set_event_flags(event_flags.SLEEP_MANAGER_EVENT)
 
     reply_name = '@sansuke05'
-    status = reply_name + ' マスター、昨日の睡眠時間の記録するよ〜\nまず、就寝時間を教えてね....'
+    status = reply_name + ' マスター、昨日の睡眠時間の記録するよ〜\nまず、就寝時間を教えてね'
 
     print(status)
 
@@ -27,7 +27,7 @@ def reply_sleep_manager_responce(text,user_name):
     print(responce_counter)
 
     #debug
-    return 'SUCCESS'
+    return 'SUCCESS.'
 
 
 
