@@ -4,9 +4,9 @@ import os, sys
 sys.path.append('/home/pi/projects/SoraTwitterBot/')
 import oauth_init
 from datetime import datetime
-import twitter
+import tweepy
 
-t = twitter.Twitter(auth=oauth_init.auth)
+api = tweepy.API(oauth_init.auth)
 h = datetime.now().hour
 
 def tweet():
@@ -20,7 +20,7 @@ def tweet():
 
     print(status)
 
-    f = t.statuses.update(status=status)
-    #print(f)
+    r = api.update_stetus(status=status)
+    #print(r)
 
 tweet()
