@@ -4,6 +4,8 @@ import tweepy
 import oauth_init
 import datetime
 import response
+import event_flags
+from sleep_manager import form_reply
 
 api = tweepy.API(oauth_init.auth)
 
@@ -20,12 +22,19 @@ class Listener(tweepy.StreamListener):
 
         # リプライに対する応答
         if str(status.in_reply_to_screen_name)=="dds_sora":
-            _response = response.reply_response('R',status.text,_user_name)
+
+            # イベントが発生していればイベントごとに処理を変更
+            if event_flags.event_flag == event_flags.SLEEP_MANAGER_EVENT:
+                _response = form_reply.reply_sleep_manager_responce(status.text,_user_name)
+            else:
+                _response = response.reply_response('R',status.text,_user_name)
         elif str(_user_id)!="dds_sora":
             # TLに対する反応
             _response = response.reply_response('TL',status.text,_user_name)
+
         else:
             return True
+
 
         if _response=='F':
             return True
