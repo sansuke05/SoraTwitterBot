@@ -20,7 +20,7 @@ def tweet():
 
     print(status)
 
-    r = api.update_stetus(status=status)
+    r = api.update_status(status=status)
     #print(r)
 
 tweet()
