@@ -32,8 +32,8 @@ def reply_sleep_manager_responce(text,user_name):
     responce_counter += 1
     print(responce_counter)
 
-    #if responce_counter == 1:
-    #    time = get_time(text)
+    if responce_counter == 1:
+        time = get_time(text)
 
     #debug
     return 'SUCCESS.'
