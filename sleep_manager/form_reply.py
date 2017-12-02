@@ -5,10 +5,14 @@ sys.path.append('/home/pi/projects/SoraTwitterBot/')
 import oauth_init
 import event_flags
 import datetime
+import re
 import tweepy
+
+ERROR = 0
 
 api = tweepy.API(oauth_init.auth)
 responce_counter = 0
+
 
 def reply_introduction():
     event_flags.set_event_flags(event_flags.SLEEP_MANAGER_EVENT)
@@ -32,15 +36,27 @@ def reply_sleep_manager_responce(text,user_name):
     responce_counter += 1
     print(responce_counter)
 
+    time = get_time(text)
+
+    if not time[0]:
+        return time[1]
+
+    # データベースに就寝時間を記録
     if responce_counter == 1:
-        time = get_time(text)
+    
+
 
     #debug
     return 'SUCCESS.'
 
 
+# テキストから時間を抽出
 def get_time(text):
-    return text
+    m = re.findall('[\d]+', text)
+    if len(m) == 2:
+        return m;
+
+    return ['ERROR','何時かわかんないよ〜\nもう一度入力し直してね']
 
 
 if __name__ == '__main__':
