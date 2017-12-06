@@ -4,7 +4,8 @@ import os, sys
 sys.path.append('/home/pi/projects/SoraTwitterBot/')
 import oauth_init
 import event_flags
-from datetime import datetime, date
+from datetime import date
+import datetime
 import re
 import pandas as pd
 import numpy as np
@@ -39,8 +40,8 @@ def reply_introduction():
 
 def reply_sleep_manager_responce(text,user_name):
     global responce_counter
-    sleep_time = datetime.now()
-    waikup_time = datetime.now()
+    sleep_time = datetime.datetime.now()
+    wakeup_time = datetime.datetime.now()
     next_responce = 'error occured!'
 
     responce_counter += 1
@@ -66,12 +67,12 @@ def reply_sleep_manager_responce(text,user_name):
 
     elif responce_counter == 2: #起床時間
         str_time = time[0] + ':' + time[1] + ':00'
-        waikup_time = datetime.strptime(str_time, '%H:%M:%S')
-        waikup_time = waikup_time.time()
+        wakeup_time = datetime.strptime(str_time, '%H:%M:%S')
+        wakeup_time = wakeup_time.time()
         next_responce = '記録したよ〜！\n' + str_yesterday + 'までの記録を送るね！'
 
         # csvに時間を記録
-        write_csv(sleep_time, waikup_time)
+        write_csv(sleep_time, wakeup_time)
 
     return next_responce
 
@@ -86,17 +87,17 @@ def get_time(text):
 
 
 # csvファイルに時間を記録
-def write_csv(sleep_time, waikup_time):
+def write_csv(sleep_time, wakeup_time):
     
     if not os.path.exists(CSV_PATH):
         # データフレームを作成
         df = pd.DataFrame(
-            [[today, sleep_time, waikup_time]],
+            [[today, sleep_time, wakeup_time]],
             columns=['記録日', '就寝時間', '起床時間']
             )
         df.to_csv(CSV_PATH, index=False, encoding="utf-8")
     else:
-        w = pd.DataFrame([[today, sleep_time, waikup_time]])
+        w = pd.DataFrame([[today, sleep_time, wakeup_time]])
         w.to_csv(CSV_PATH, index=False, encoding="utf-8", mode='a', header=False)
 
 
